@@ -1,28 +1,34 @@
 {
     "artworks": [
         {
-            "identifier": "TheAnatomyLessonOfDrNicolaesTulp",
-            "title": "The Anatomy Lesson of Dr. Nicolaes Tulp",
-            "year": "1632",
-            "description": "A description of The Anatomy Lesson of Dr. Nicolaes Tulp."
-        },
-        {
-            "identifier": "Sunflowers",
-            "title": "Sunflowers",
-            "year": "1888",
-            "description": "A description of Sunflowers."
-        },
-        {
-            "identifier": "TheMilkmaid",
-            "title": "The Milkmaid",
-            "year": "1658",
-            "description": "A description of The Milkmaid."
-        },
-        {
-            "identifier": "GirlWithAPearlEarring",
+            "identifier": "Girl With A Pearl Earring, 1665",
             "title": "Girl With A Pearl Earring",
             "year": "1665",
-            "description": "A description of Girl With A Pearl Earring."
+            "description": "This is an oil painting by Dutch Golden Age painter Johannes Vermeer. The painting is famous for the enigmatic expression on the girl's face and the unique quality of light."
+        },
+        {
+            "identifier": "Sunflowers, 1888",
+            "title": "Sunflowers",
+            "year": "1888",
+            "description": "A series of paintings by Vincent van Gogh. These works depict sunflowers in all stages of life and are renowned for their bold yellow colors and thick, impasto brushstrokes."
+        },
+        {
+            "identifier": "The Anatomy Lesson of Dr. Nicolaes Tulp, 1632",
+            "title": "The Anatomy Lesson of Dr. Nicolaes Tulp",
+            "year": "1632",
+            "description": "A work by Rembrandt housed in the Mauritshuis museum in The Hague. The painting shows Dr. Tulp explaining the musculature of the arm to medical professionals."
+        },
+        {
+            "identifier": "The Milkmaid, 1658",
+            "title": "The Milkmaid",
+            "year": "1658",
+            "description": "A painting by Johannes Vermeer, often considered a depiction of domestic virtue, simplicity, and diligence, celebrated for its subtle play of light and texture."
+        },
+        {
+            "identifier": "The Starry Night, 1889",
+            "title": "The Starry Night",
+            "year": "1889",
+            "description": "An oil on canvas by Vincent van Gogh. Painted in June 1889, it depicts the view from the east-facing window of his asylum room at Saint-Rémy-de-Provence, just before sunrise, with the addition of an imaginary village."
         }
     ]
 }
