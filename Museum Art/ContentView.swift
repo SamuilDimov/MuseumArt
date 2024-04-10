@@ -4,7 +4,7 @@ import AVFoundation
 import Vision
 
 struct ContentView: View {
-    @State private var recognizedText: String = "Scanning"
+    @State private var recognizedText: String = "Capture an image to recognize"
     @State private var isScanning: Bool = false
     @State private var showImagePicker = false
     @State private var image: UIImage?
@@ -24,11 +24,12 @@ struct ContentView: View {
                             self.recognizedText = "Capture an image to recognize"
                             self.showImagePicker = true
                         }
-                        .font(.title)
+                        .font(.headline)
                         .foregroundColor(.white)
-                        .padding()
+                        .padding(.horizontal)
+                        .padding(.vertical, 8)
                         .background(Color.green)
-                        .cornerRadius(10)
+                        .cornerRadius(8)
                         .padding()
                     } else {
                         Button("Take Picture") {

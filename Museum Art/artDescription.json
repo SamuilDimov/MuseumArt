@@ -1,0 +1,28 @@
+{
+    "artworks": [
+        {
+            "identifier": "TheAnatomyLessonOfDrNicolaesTulp",
+            "title": "The Anatomy Lesson of Dr. Nicolaes Tulp",
+            "year": "1632",
+            "description": "A description of The Anatomy Lesson of Dr. Nicolaes Tulp."
+        },
+        {
+            "identifier": "Sunflowers",
+            "title": "Sunflowers",
+            "year": "1888",
+            "description": "A description of Sunflowers."
+        },
+        {
+            "identifier": "TheMilkmaid",
+            "title": "The Milkmaid",
+            "year": "1658",
+            "description": "A description of The Milkmaid."
+        },
+        {
+            "identifier": "GirlWithAPearlEarring",
+            "title": "Girl With A Pearl Earring",
+            "year": "1665",
+            "description": "A description of Girl With A Pearl Earring."
+        }
+    ]
+}

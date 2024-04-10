@@ -18,6 +18,7 @@
 		A7D339F42BB5D8AC007A819C /* ArtClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = A7D339F32BB5D8AC007A819C /* ArtClassifier.mlmodel */; };
 		A7D339F62BB5E337007A819C /* ScannedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D339F52BB5E337007A819C /* ScannedImage.swift */; };
 		A7D339F82BBD4CFE007A819C /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D339F72BBD4CFE007A819C /* ImagePicker.swift */; };
+		A7D339FC2BBD66A2007A819C /* artDescription.json in Resources */ = {isa = PBXBuildFile; fileRef = A7D339FB2BBD66A2007A819C /* artDescription.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		A7D339F32BB5D8AC007A819C /* ArtClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = ArtClassifier.mlmodel; path = ../../../Downloads/ArtClassifier.mlmodel; sourceTree = "<group>"; };
 		A7D339F52BB5E337007A819C /* ScannedImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannedImage.swift; sourceTree = "<group>"; };
 		A7D339F72BBD4CFE007A819C /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		A7D339FB2BBD66A2007A819C /* artDescription.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = artDescription.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 			children = (
 				A7D339F32BB5D8AC007A819C /* ArtClassifier.mlmodel */,
 				A7A2518F2BB1B23400F4BE1C /* Museum_ArtApp.swift */,
+				A7D339FB2BBD66A2007A819C /* artDescription.json */,
 				A7A251912BB1B23400F4BE1C /* ContentView.swift */,
 				A7A251932BB1B23500F4BE1C /* Assets.xcassets */,
 				A7A251952BB1B23500F4BE1C /* Museum_Art.entitlements */,
@@ -254,6 +257,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A7D339FC2BBD66A2007A819C /* artDescription.json in Resources */,
 				A7A251982BB1B23500F4BE1C /* Preview Assets.xcassets in Resources */,
 				A7A251942BB1B23500F4BE1C /* Assets.xcassets in Resources */,
 			);
