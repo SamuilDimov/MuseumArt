@@ -3,6 +3,18 @@ import UIKit
 import AVFoundation
 import Vision
 
+//// Extension to handle hexadecimal colors in SwiftUI
+extension Color {
+    init(hex: String) {
+        let hex = hex.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
+        var int: UInt64 = 0
+        Scanner(string: hex).scanHexInt64(&int)
+        let r, g, b: UInt64
+        (r, g, b) = (int >> 16, int >> 8 & 0xFF, int & 0xFF)
+        self.init(red: Double(r) / 255, green: Double(g) / 255, blue: Double(b) / 255)
+    }
+}
+
 struct ContentView: View {
     @State private var recognizedArtworkIdentifier: String? = nil
     @State private var displayedText: String = "Capture an image to recognize"
@@ -12,80 +24,96 @@ struct ContentView: View {
     @State private var image: UIImage?
     let artworkDescriptions: [String: ArtworkDescription] = loadArtworkDescriptions()
     let synthesizer = AVSpeechSynthesizer()
-
+    
     var body: some View {
-        NavigationStack {
-            VStack {
-                if isScanning {
-                    if let image = image {
-                        Image(uiImage: image)
-                            .resizable()
-                            .scaledToFit()
-                        Text(displayedText)
+       
+            NavigationStack {
+                VStack {
+                    
+                    if isScanning {
+                        if let image = image {
+                            VStack { 
+                                Image(uiImage: image)
+                                    .resizable()
+                                    .scaledToFit()
+                            }
                             .padding()
-                        HStack {
-                            if let identifier = recognizedArtworkIdentifier,
-                               let description = artworkDescriptions[identifier]?.description {
-                                Button(isSpeaking ? "Stop" : "Read Description") {
+                            .background(Color(hex: "242223")) // Optional: background color for image container
+                            .cornerRadius(20)
+                            .foregroundColor(Color(hex: "F5F5DC"))
+                        
+                            Text(displayedText)
+                                .padding()
+                                .foregroundColor(Color(hex: "F5F5DC"))
+                                
+                            HStack {
+                                if let identifier = recognizedArtworkIdentifier,
+                                   let description = artworkDescriptions[identifier]?.description {
+                                    Button(isSpeaking ? "Stop" : "Read Description") {
+                                        if isSpeaking {
+                                            stopSpeaking()
+                                        } else {
+                                            speak(description)
+                                        }
+                                    }
+                                    .frame(minWidth: 0, maxWidth: .infinity)
+                                    .padding()
+                                    .background(Color(hex: "F1ECDD"))
+                                    .foregroundColor(Color(hex: "242223"))
+                                    .cornerRadius(100)
+                                }
+                                Button("Scan New Image") {
+                                    self.image = nil
+                                    self.recognizedArtworkIdentifier = nil
+                                    self.displayedText = "Capture an image to recognize"
+                                    self.showImagePicker = true
                                     if isSpeaking {
                                         stopSpeaking()
-                                    } else {
-                                        speak(description)
                                     }
                                 }
                                 .frame(minWidth: 0, maxWidth: .infinity)
+                                .foregroundColor(Color(hex: "242223"))
                                 .padding()
-                                .background(isSpeaking ? Color.red : Color.blue)
-                                .foregroundColor(.white)
-                                .cornerRadius(10)
+                                .background(Color(hex: "FFD700"))
+                                .cornerRadius(100)
                             }
-                            Button("Scan New Image") {
-                                self.image = nil
-                                self.recognizedArtworkIdentifier = nil
-                                self.displayedText = "Capture an image to recognize"
-                                self.showImagePicker = true
-                                if isSpeaking {
-                                    stopSpeaking()
-                                }
+                            .padding()
+                        } else {
+                            Button("Take Picture") {
+                                showImagePicker = true
                             }
+                            .font(.title)
+                            .foregroundColor(Color(hex: "242223"))
                             .frame(minWidth: 0, maxWidth: .infinity)
-                            .font(.headline)
-                            .foregroundColor(.white)
-                            .padding(.horizontal)
-                            .padding(.vertical, 8)
-                            .background(Color.green)
-                            .cornerRadius(8)
+                            .padding()
+                            .background(Color(hex: "FFD700"))
+                            .cornerRadius(100)
+                            .padding()
                         }
-                        .padding()
                     } else {
-                        Button("Take Picture") {
-                            showImagePicker = true
+                        Button("Scan") {
+                            isScanning = true
                         }
                         .font(.title)
-                        .foregroundColor(.white)
+                        .foregroundColor(Color(hex: "242223"))
                         .frame(minWidth: 0, maxWidth: .infinity)
                         .padding()
-                        .background(Color.blue)
-                        .cornerRadius(10)
+                        .background(Color(hex: "FFD700"))
+                        .cornerRadius(100)
                         .padding()
                     }
-                } else {
-                    Button("Scan") {
-                        isScanning = true
-                    }
-                    .font(.title)
-                    .foregroundColor(.white)
-                    .frame(minWidth: 0, maxWidth: .infinity)
-                    .padding()
-                    .background(Color.blue)
-                    .cornerRadius(10)
-                    .padding()
                 }
+                .sheet(isPresented: $showImagePicker, onDismiss: processImage) {
+                    ImagePicker(image: $image, sourceType: .camera)
+                }
+                .navigationBarTitleDisplayMode(.inline)
             }
-            .sheet(isPresented: $showImagePicker, onDismiss: processImage) {
-                ImagePicker(image: $image, sourceType: .camera)
-            }
-            .navigationBarTitleDisplayMode(.inline)
+        }
+
+    
+    struct ContentView_Previews: PreviewProvider {
+        static var previews: some View {
+            ContentView()
         }
     }
 
@@ -164,3 +192,4 @@ func loadArtworkDescriptions() -> [String: ArtworkDescription] {
 
     return Dictionary(uniqueKeysWithValues: loadedArtworks.artworks.map { ($0.identifier, $0) })
 }
+
